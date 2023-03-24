@@ -56,6 +56,10 @@ final class Info {
                 "Чтобы завершить работу приложения введите /stop");
     }
 
+    public void inputValueInfo() {
+        System.out.print("Введите команду чтобы продолжить: ");
+    }
+
     //--- Метод с информацией о значении счётчика ---
     public void valueInfo(int value) {
         System.out.println("Значение счётчика: " + value);
@@ -73,6 +77,6 @@ final class Info {
 
     //--- Метод с информацией о конечном значании счётчика и завершением работы приложения ---
     public void endAppInfo(int value) {
-        System.out.print("Конечное значение счётчика: " + value + "\nСохраняем значение счетчика\n" + "Завершаю работу");
+        System.out.print("Конечное значение счётчика: " + value + "\nСохраняю значение счетчика\n" + "Завершаю работу");
     }
 }
