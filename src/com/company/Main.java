@@ -1,4 +1,5 @@
 package com.company;
+import java.util.*;
 
 //--- Перечисление с командами ---
 enum Command {
@@ -22,5 +23,9 @@ enum Command {
 public class Main {
 
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Counter counter = new Counter();
+        Info info = new Info();
+
     }
 }

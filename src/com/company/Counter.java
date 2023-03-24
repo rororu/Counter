@@ -1,23 +1,44 @@
 package com.company;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 //--- Класс счетчик ---
 final class Counter {
     //--- Значение счётчика ---
-    private int num;
+    private int value;
 
     //--- Метод, который делает инкремент счётчика ---
     public void updateValue() {
-        num++;
+        value++;
     }
 
     //--- Метод сброса значения ---
     public void resetValue() {
-        num = 0;
+        value = 0;
     }
 
     //--- Метод получения значения ---
-    public int getNum() {
-        return num;
+    public int getValue() {
+        return value;
+    }
+
+    //--- Метод сохранения значения ---
+    public void saveValue() {
+        try (FileWriter fileWriter = new FileWriter("state.dat")) {
+            fileWriter.write(value);
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    //--- Метод загрузки значения ---
+    public void loadValue() {
+        try (BufferedReader fileReader = new BufferedReader(new FileReader("state.dat"))) {
+            this.value = fileReader.read();
+        } catch (IOException ignored) {}
     }
 }
 
@@ -52,6 +73,6 @@ final class Info {
 
     //--- Метод с информацией о конечном значании счётчика и завершением работы приложения ---
     public void endAppInfo(int value) {
-        System.out.print("Конечное значение счётчика: " + value + "\nЗавершаю работу");
+        System.out.print("Конечное значение счётчика: " + value + "\nСохраняем значение счетчика\n" + "Завершаю работу");
     }
 }
