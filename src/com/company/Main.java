@@ -56,7 +56,6 @@ public class Main {
                     info.resetValueInfo(counter.getValue());
                 } else if (command.equals(Command.STOP.getCommandName())) {
                     //--- Сохраняю значение и завершаю работу программы ---
-                    //counter.saveValue();
                     info.endAppInfo(counter.getValue());
                     break;
                 } else {
