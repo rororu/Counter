@@ -33,7 +33,7 @@ public class Main {
         //--- Загружаю значение, вывожу его и начальную информацию для пользователя ---
         counter.loadValue();
         info.startInfo();
-        info.valueInfo(counter.getValue());
+        info.firstValueInfo(counter.getValue());
 
         //--- Бесконечный цикл ---
         for(;;) {
@@ -56,7 +56,7 @@ public class Main {
                     info.resetValueInfo(counter.getValue());
                 } else if (command.equals(Command.STOP.getCommandName())) {
                     //--- Сохраняю значение и завершаю работу программы ---
-                    counter.saveValue();
+                    //counter.saveValue();
                     info.endAppInfo(counter.getValue());
                     break;
                 } else {
@@ -65,8 +65,12 @@ public class Main {
                 }
             } catch (WrongCommandException exception) {
                 //--- В блоке catch ловлю исключение, вывожу сведения об ощибке и инфорирую пользователя ---
-                System.out.println(exception.getMessage());
+                System.out.println("\n" + exception.getMessage());
                 info.valueInfo(counter.getValue());
+            } finally {
+                /* --- Блок finally сохраняет значение даже в случае
+                принудительноего или аварийного завершения работы приложения --- */
+                counter.saveValue();
             }
         }
     }

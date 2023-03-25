@@ -1,12 +1,9 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 //--- Класс счетчик ---
-final class Counter {
+final class Counter implements Serializable {
     //--- Значение счётчика ---
     private int value;
 
@@ -56,6 +53,7 @@ final class Info {
                 "Чтобы завершить работу приложения введите /stop");
     }
 
+    //--- Метод с нформацией о возможности ввести команду ---
     public void inputValueInfo() {
         System.out.print("Введите команду чтобы продолжить: ");
     }
@@ -65,18 +63,27 @@ final class Info {
         System.out.println("Значение счётчика: " + value);
     }
 
+    //--- Метод с информацией о загруженном значении счётчика ---
+    public void firstValueInfo(int value) {
+        if (value != 0) {
+            System.out.println("Счётчек загружен, значение: " + value);
+        } else {
+            System.out.println("Значение счётчика: " + value);
+        }
+    }
+
     //--- Метод с информацией о новом значении счётчика ---
     public void newValueInfo(int value) {
-        System.out.println("Новое значение счётчика: " + value);
+        System.out.println("\nНовое значение счётчика: " + value);
     }
 
     //--- Метод с информацией сброса значения счётчика ---
     public void resetValueInfo(int value) {
-        System.out.println("Счетчик был сброшен\n" + "Теперь значение счётчика: " + value);
+        System.out.println("\nСчетчик был сброшен\n" + "Теперь значение счётчика: " + value);
     }
 
     //--- Метод с информацией о конечном значании счётчика и завершением работы приложения ---
     public void endAppInfo(int value) {
-        System.out.print("Конечное значение счётчика: " + value + "\nСохраняю значение счетчика\n" + "Завершаю работу");
+        System.out.print("\nКонечное значение счётчика: " + value + "\nСохраняю значение счетчика\n" + "Завершаю работу");
     }
 }
